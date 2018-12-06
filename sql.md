@@ -1,4 +1,4 @@
-# 统计数据重复数量
+### 统计数据重复数量
 ```sql
 select count(*),CategoryId from T_CategoryProperty group by CategoryId order by count(*) desc
 ```
