@@ -14,7 +14,7 @@ window.$docsify = {
   repo: 'https://github.com/wjkang/i-notes',
   auto2top: true,
   loadSidebar: true,
-  subMaxLevel: 2,
+  subMaxLevel: 5,
   homepage: 'README.md',
   search: {
     noData: {
