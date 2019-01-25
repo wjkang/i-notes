@@ -2,6 +2,14 @@
 
 执行完某个宏任务，如果有相应的微任务则执行，然后执行下一个宏任务。
 
+**宏任务**
+
+![](img/javascript/2019-01-25-17-16-59.png)
+
+**微任务**
+
+![](img/javascript/2019-01-25-17-17-42.png)
+
 ```js
 function handler () {
   console.log('click') //直接输出
