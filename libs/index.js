@@ -55,3 +55,26 @@ window.$docsify = {
     }
   ]
 }
+var blackCat='./libs/live2d-widget/live2d-widget-model-hijiki/assets/hijiki.model.json';
+var whiteCat='./libs/live2d-widget/live2d-widget-model-tororo/assets/tororo.model.json';
+L2Dwidget.init({
+  model: {
+    jsonPath: Math.random()>.5?blackCat:blackCat,
+  },
+  display: {
+    width: 100,
+    height: 150,
+    position: 'right',
+    hOffset: 0,
+    vOffset: 0,
+  },
+  mobile: {
+    show: true,
+    scale: 1,
+    motion: true,
+  },
+  react: {
+    opacityDefault: 0.85,
+    opacityOnHover: 0.2,
+  },
+})
