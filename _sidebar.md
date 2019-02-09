@@ -6,3 +6,4 @@
     - [JavaScript](/javascript.md)
 - **其它**
     - [字符编码](/字符编码.md)
+    - [字节序](/字节序.md)
