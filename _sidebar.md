@@ -2,8 +2,9 @@
 	- [测试](/test.md?v=1)
 - **后端**
     - [SQL](/sql.md)
-- **前端**
-    - [JavaScript](/javascript.md)
+- **JS**
+    - [宏任务与微任务](/js/宏任务与微任务.md)
+    - [Class](/js/Class.md)
 - **其它**
     - [字符编码](/字符编码.md)
     - [字节序](/字节序.md)
