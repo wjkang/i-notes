@@ -4,6 +4,7 @@
     - [SQL](/sql.md)
 - **JS**
     - [宏任务与微任务](/js/宏任务与微任务.md)
+    - [Promise](/js/Promise.md)
     - [Class](/js/Class.md)
     - [原型链](/js/原型链.md)
     - [call和apply高级用法及原理](/js/call和apply高级用法及原理.md)
