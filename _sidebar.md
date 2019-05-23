@@ -8,6 +8,8 @@
   - [Class](/js/Class.md)
   - [原型链](/js/原型链.md)
   - [call和apply高级用法及原理](/js/call和apply高级用法及原理.md)
+  - [new原理及模拟实现](/js/new 原理及模拟实现.md)
+  - [bind 原理及模拟实现](/js/bind 原理及模拟实现.md)
 - **计算机基础**
   - 计算机网络
     - [TCP三次握手、四次挥手](/计算机基础/计算机网络/TCP三次握手、四次挥手.md)

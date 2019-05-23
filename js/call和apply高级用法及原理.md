@@ -29,7 +29,7 @@ Object.prototype.toString.call(JSON);
 
 `(new Number(1)).toString()`的结果为"1"，因为在`Number`内`toString`已经被重写。
 
-### 模拟实现
+### ES3 模拟实现
 
 #### 实现调用
 ```js
@@ -115,3 +115,53 @@ function log(str1,str2){
 }
 log.apply2(data,["A","B"]);
 ```
+#### call
+```js
+Function.prototype.call = function (context) {
+    context = context ? Object(context) : window; 
+    context.fn = this;
+
+    var args = [];
+    for(var i = 1, len = arguments.length; i < len; i++) {
+        args.push('arguments[' + i + ']');
+    }
+    var result = eval('context.fn(' + args +')');
+
+    delete context.fn
+    return result;
+}
+```
+### ES6 实现
+
+#### applay
+```js
+Function.prototype.apply = function (context, arr) {
+    context = context ? Object(context) : window; 
+    context.fn = this;
+  
+    let result;
+    if (!arr) {
+        result = context.fn();
+    } else {
+        result = context.fn(...arr);
+    }
+      
+    delete context.fn
+    return result;
+}
+```
+#### call
+```js
+Function.prototype.call = function (context) {
+  context = context ? Object(context) : window; 
+  context.fn = this;
+
+  let args = [...arguments].slice(1);
+  let result = context.fn(...args);
+
+  delete context.fn
+  return result;
+}
+```
+
+
