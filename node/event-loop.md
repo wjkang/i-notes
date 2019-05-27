@@ -71,3 +71,14 @@ someAsyncOperation(function () {
 >-> node eventloop.js
 setTimeout: 22ms have passed since I was scheduled
 fileReaderTime 2
+
+解释：
+当时程序启动时，event loop初始化：
+
+1、timer阶段（无callback到达，setTimeout需要10毫秒）
+
+2、i/o callback阶段，无异步i/o完成
+
+3、忽略
+
+4、poll阶段，阻塞在这里，当运行2ms时，fs.readFile完成，将其callback加入 poll队列，并执行callback， 其中callback要消耗20毫秒,等callback之行完，poll处于空闲状态，由于之前设定了timer，因此检查timers,发现timer设定时间是20ms，当前时间运行超过了该值，因此，立即循环回到timer阶段执行其callback,因此，虽然setTimeout的20毫秒，但实际是22毫秒后执行。
