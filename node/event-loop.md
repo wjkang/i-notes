@@ -38,3 +38,36 @@ poll 阶段有两个主要的功能：
 如果event loop进入了 poll阶段，且代码设定了timer：
 
 * 如果poll queue进入空状态时（即poll 阶段为空闲状态），event loop将检查timers,如果有1个或多个timers时间时间已经到达，event loop将按循环顺序进入 timers 阶段，并执行timer queue.
+
+**例子1**
+
+```js
+var fs = require('fs');
+
+function someAsyncOperation (callback) {
+  // 花费2毫秒
+  fs.readFile(__dirname + '/' + __filename, callback);
+}
+
+var timeoutScheduled = Date.now();
+var fileReadTime = 0;
+
+setTimeout(function () {
+  var delay = Date.now() - timeoutScheduled;
+  console.log('setTimeout: ' + (delay) + "ms have passed since I was scheduled");
+  console.log('fileReaderTime',fileReadtime - timeoutScheduled);
+}, 10);
+
+someAsyncOperation(function () {
+  fileReadtime = Date.now();
+  while(Date.now() - fileReadtime < 20) {
+
+  }
+});
+```
+
+结果: 先执行someAsyncOperation的callback,再执行setTimeout callback
+
+>-> node eventloop.js
+setTimeout: 22ms have passed since I was scheduled
+fileReaderTime 2
