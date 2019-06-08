@@ -12,6 +12,7 @@
   - [bind 原理及模拟实现](/js/bind 原理及模拟实现.md)
 - **Vue.js**
   - [响应式系统](/vuejs/响应式系统.md)
+  - [computed原理](/vuejs/computed原理.md)
 - **Node.js**
   - [Event Loop](/node/event-loop.md)
 - **计算机基础**
