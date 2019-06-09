@@ -62,6 +62,38 @@ if (Dep.targetWatcher) {
 
 计算属性的 `watcher` 中，保存有相应依赖属性的 `dep`。计算属性重新计算的时候（被访问到了），会重新收集依赖（依赖属性的 `dep`收集当前计算属性的`watcher`），计算完之后还会移除没有的依赖（计算属性可能不依赖某个属性了，对应属性的`dep`删除计算属性的`watcher`）。
 
->当计算属性不再被访问，依赖并没有被移除（之前依赖属性的 `dep`中还收集计算属性的`watcher`）
+>当计算属性不再被访问（不再执行任何关于计算属性对应的 `watcher`的逻辑），依赖并没有被移除（之前依赖属性的 `dep`中还收集计算属性的`watcher`）
 
->计算属性依赖的属性没有绑定的界面上，更新属性的时候会不会触发组件的更新检查？
+**计算属性依赖的属性没有绑定在界面上，更新属性的时候会不会触发组件的更新检查？**
+* 首次渲染的时候（执行 `mountComponent`），初始化负责组件 `update` 的 `watcher`,并且`watcher`内直接执行`get`方法（计算属性的 `watcher`不会执行）。
+* `updateComponent`对应的`watcher`加入`targetStack`。
+* 第一次访问计算属性，执行`evaluate`，计算属性对应的`watcher`加入`targetStack`（计算计算属性的时候，关于依赖属性的访问逻辑前面已经分析过）。
+* `evaluate`执行完，计算属性对应的`watcher`从`targetStack`移除，`Dep.target`对应`updateComponent`的`watcher`
+* 执行`watcher.depend()`(计算属性对应的`watcher`)。
+>```js
+ depend () {
+    let i = this.deps.length
+    while (i--) {
+      this.deps[i].depend()
+    }
+  }
+ ```
+* `deps`为计算属性所依赖的属性对应的 `dep`。
+
+>```js
+ depend () {
+    if (Dep.target) {
+      Dep.target.addDep(this)
+    }
+  }
+ ```
+
+ * 计算属性所依赖的属性对应的 `dep`的`subs`会添加`updateComponent`的`watcher`。
+
+所以，计算属性依赖的属性即使没有绑定在界面上，更新属性的时候依然会触发组件的更新检查。
+
+**当计算属性不再被访问或者计算属性中某个依赖属性不再被访问，更新属性的时候是否会触发组件的更新检查（依赖属性对应的`dep`的`subs`是否已经将相应的`watcher`移除）**
+
+
+
+
