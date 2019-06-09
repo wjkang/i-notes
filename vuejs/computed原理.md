@@ -89,11 +89,39 @@ if (Dep.targetWatcher) {
  ```
 
  * 计算属性所依赖的属性对应的 `dep`的`subs`会添加`updateComponent`的`watcher`。
+ >`watcher`的`deps`会添加属性对应的 `dep`。（也就是直接访问属性或者通过计算属性间接访问，都会如此）
 
 所以，计算属性依赖的属性即使没有绑定在界面上，更新属性的时候依然会触发组件的更新检查。
 
+**当计算属性或依赖属性一直被访问，依赖会一直存在着**：
+
+* 组件更新的时候，`Dep.target`对应`updateComponent`的`watcher`。
+* 绑定计算属性，执行
+```js
+if (watcher.dirty) {
+  watcher.evaluate()
+}
+if (Dep.target) {
+  watcher.depend()
+}
+return watcher.value
+```
+所以依赖会一直收集着。
+
 **当计算属性不再被访问或者计算属性中某个依赖属性不再被访问，更新属性的时候是否会触发组件的更新检查（依赖属性对应的`dep`的`subs`是否已经将相应的`watcher`移除）**
 
+* 某次更新后，达到某种临界值，计算属性不再被访问或者计算属性中某个依赖属性不再被访问。
+* 更新依赖属性，还会触发组件更新。
+* 计算属性不再被访问
+ * `watcher`的`newDeps`不再收集有依赖属性的`dep`。
+ * 执行`cleanupDeps`，将`watcher`从依赖属性的`dep`的`subs`移除。
+ * 更新依赖属性不再触发组件更新。
+* 某个依赖属性不再被访问
+ * 如果需要执行`evaluate`，计算属性的`watcher`不再收集相应的依赖属性的 `dep`，也就是相应`dep`的`subs`移除计算属性的`watcher`（更新依赖属性不再触发计算属性的`watcher`的`update`）。
+ * 执行`watcher.depend()`，因为`watcher`不再收集相应的依赖属性的 `dep`，所以依赖属性的`dep` 也不会再加到`Dep.target`的`newDeps`中。
+ * 执行`cleanupDeps`后，相应`dep`的`subs`移除组件更新的`watcher`（更新依赖属性不再触发组件更新）
 
+
+>`watcher.depend()`的作用是将计算属性的`watcher`的`deps`加入`Dep.target`所指向的`watcher`（正常情况下就是负责更新组件的`watcher`）的`deps`中。
 
 
