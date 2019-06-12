@@ -13,6 +13,7 @@
 - **HTML与CSS**
   - [Flex](/html与css/flex.md)
 - **Vue.js**
+  - [生命周期](/vuejs/生命周期.md)
   - [响应式系统](/vuejs/响应式系统.md)
   - [computed原理](/vuejs/computed原理.md)
 - **移动端**
