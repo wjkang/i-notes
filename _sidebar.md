@@ -12,10 +12,14 @@
   - [bind 原理及模拟实现](/js/bind 原理及模拟实现.md)
 - **HTML与CSS**
   - [Flex](/html与css/flex.md)
+  - [水平垂直居中](/html与css/水平垂直居中.md)
+  - [BFC](/html与css/BFC.md)
 - **Vue.js**
   - [生命周期](/vuejs/生命周期.md)
   - [响应式系统](/vuejs/响应式系统.md)
   - [computed原理](/vuejs/computed原理.md)
+- **React.js**
+  - [生命周期](/react/生命周期.md)
 - **移动端**
   - [移动端适配](/移动端/移动端适配.md)
 - **Node.js**
