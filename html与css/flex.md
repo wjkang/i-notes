@@ -1,3 +1,6 @@
+
+[flex](http://static.vgee.cn/static/index.html ':include :type=iframe width=100% height=16200')
+
 <vuep template="#example"></vuep>
 
 <script v-pre type="text/x-template" id="example">
@@ -46,3 +49,9 @@
     }
 </script>
 </script>
+
+[https://www.w3cplus.com/css3/a-visual-guide-to-css3-flexbox-properties.html](https://www.w3cplus.com/css3/a-visual-guide-to-css3-flexbox-properties.html)
+
+[深入理解css3中的flex-grow、flex-shrink、flex-basis](https://www.cnblogs.com/ghfjj/p/6529733.html)
+
+[Solved by Flexbox](https://magic-akari.github.io/solved-by-flexbox/)
