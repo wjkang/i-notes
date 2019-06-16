@@ -1,4 +1,27 @@
 
+```
+flex-wrap: nowrap | wrap | wrap-reverse;
+nowrap（默认）：不换行。
+wrap：换行，第一行在上方。
+wrap-reverse：换行，第一行在下方。
+
+项目在主轴上的对齐方式。
+justify-content: flex-start | flex-end | center | space-between | space-around;
+flex-start（默认值）：左对齐
+flex-end：右对齐
+center： 居中
+space-between：两端对齐，项目之间的间隔都相等。
+space-around：每个项目两侧的间隔相等。所以，项目之间的间隔比项目与边框的间隔大一倍。
+
+定义项目在交叉轴上如何对齐。
+align-items: flex-start | flex-end | center | baseline | stretch;
+flex-start：交叉轴的起点对齐。
+flex-end：交叉轴的终点对齐。
+center：交叉轴的中点对齐。
+baseline: 项目的第一行文字的基线对齐。
+stretch（默认值）：如果项目未设置高度或设为auto，将占满整个容器的高度。
+```
+
 [flex](http://static.vgee.cn/static/index.html ':include :type=iframe width=100% height=16200')
 
 <vuep template="#example"></vuep>
