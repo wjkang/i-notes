@@ -21,6 +21,7 @@
   - [computed原理](/vuejs/computed原理.md)
 - **React.js**
   - [生命周期](/react/生命周期.md)
+  - [Redux](/react/redux.md)
 - **移动端**
   - [移动端适配](/移动端/移动端适配.md)
 - **Node.js**
