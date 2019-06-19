@@ -11,6 +11,8 @@
   - [new原理及模拟实现](/js/new 原理及模拟实现.md)
   - [bind 原理及模拟实现](/js/bind 原理及模拟实现.md)
   - [Event Loop](/js/event_loop.md)
+  - [防抖与节流](/js/防抖与节流.md)
+  - [深拷贝](/js/深拷贝.md)
 - **HTML与CSS**
   - [Flex](/html与css/flex.md)
   - [水平垂直居中](/html与css/水平垂直居中.md)
