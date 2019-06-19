@@ -10,6 +10,7 @@
   - [call和apply高级用法及原理](/js/call和apply高级用法及原理.md)
   - [new原理及模拟实现](/js/new 原理及模拟实现.md)
   - [bind 原理及模拟实现](/js/bind 原理及模拟实现.md)
+  - [Event Loop](/js/event_loop.md)
 - **HTML与CSS**
   - [Flex](/html与css/flex.md)
   - [水平垂直居中](/html与css/水平垂直居中.md)
